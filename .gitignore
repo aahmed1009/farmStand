@@ -1,5 +1,5 @@
 # Ignore Node.js modules and dependencies
-node_modules/
+node_modules
 
 # Ignore environment-specific configuration files
 .env

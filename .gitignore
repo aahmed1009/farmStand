@@ -1,32 +1,36 @@
-# Ignore Node.js modules and dependencies
-node_modules
+# Node.js / Express.js specific
+node_modules/
+npm-debug.log
 
-# Ignore environment-specific configuration files
-.env
-.env.development
-.env.production
-
-# Ignore log files
+# Logs
+logs/
 *.log
 
-# Ignore temporary and generated files
-.tmp/
-.DS_Store
+# Dependency directories
+.pnpm/
+.yarn/
+yarn-error.log
+package-lock.json
 
-# Ignore user uploads (if not stored externally)
-uploads/
-
-# Ignore development and build artifacts
-dist/
-build/
-coverage/
-
-# Ignore editor/IDE-specific files and directories
+# Editor/IDE specific files
 .vscode/
 .idea/
-*.sublime-project
-*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 
-# Ignore npm/yarn lock files
-package-lock.json
-yarn.lock
+# Environment variables
+.env
+
+# Testing
+coverage/
+
+# Build output
+dist/
+build/
+
+# Misc
+.DS_Store
+Thumbs.db

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FarmStand Products</title>
+    <title>FarmStand</title>
+    <link rel="stylesheet" href="/stylesheet/style.css" />
   </head>
   <body>
     <h1>Welcome to Farm Stand products 🤩</h1>
@@ -13,5 +14,7 @@
       <li><a href="/products/<%= product._id %>"><%= product.name %></a></li>
       <% } %>
     </ul>
+
+    <a href="/products/new"><button>Add Your New Product Now</button></a>
   </body>
 </html>

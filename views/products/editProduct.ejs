@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update Product page</title>
+    <link rel="stylesheet" href="/stylesheet/style.css" />
   </head>
   <body>
     <h1>Update Product</h1>
@@ -31,13 +32,17 @@
 
       <label for="category">Category:</label>
       <select id="category" name="category">
-        <option value="fruit">Fruit</option>
-        <option value="vegetable">Vegetable</option>
-        <option value="dairy">Dairy</option></select
-      ><br /><br />
+
+      <% for(let category of categories){ %>
+            <option value="<%=category%>" <%= product.category === category ? 'selected': '' %>><%=category%></option>
+            <% } %>
+        
+        </select><br /><br />
 
       <button>Submit</button>
     </form>
-    <a href="/products/<%=product._id%>">Cancel</a>
+    
+    <a href="/products/<%=product._id%>"><button>Cancel</button></a>
+    
   </body>
 </html>

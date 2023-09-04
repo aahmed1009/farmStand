@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Product page</title>
+    <link rel="stylesheet" href="/stylesheet/style.css" />
   </head>
   <body>
     <h1>Add Product</h1>
@@ -23,12 +24,17 @@
 
       <label for="category">Category:</label>
       <select id="category" name="category">
-        <option value="fruit">Fruit</option>
-        <option value="vegetable">Vegetable</option>
-        <option value="dairy">Dairy</option></select
+        <% for(let category of categories){ %>
+        <option value="<%=category%>"><%=category%></option>
+        <% } %></select
       ><br /><br />
 
-      <input type="submit" value="Add Product" />
+      <!-- ... (your form elements) ... -->
+      <button type="submit">Add Product</button>
     </form>
+
+    <a href="/products/"
+      ><button class="all-products-button">All Products ⬅</button></a
+    >
   </body>
 </html>

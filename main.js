@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+
 const path = require("path");
 const mongoose = require("mongoose");
 const Product = require("./models/product");
@@ -24,14 +25,21 @@ app.use(methodOverride("_method"));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, "public")));
+
+const categories = ["fruit", "vegetable", "dairy", "fungus"];
+
 app.get("/products", async (req, res) => {
   const products = await Product.find({});
-  console.log(products);
+  // console.log(products);
   res.render("products/index", { products });
 });
 
 app.get("/products/new", (req, res) => {
-  res.render("products/newProduct");
+  res.render("products/newProduct", {
+    categories,
+  });
 });
 app.post("/products", async (req, res) => {
   const addNewProduct = new Product(req.body);
@@ -51,7 +59,7 @@ app.get("/products/:id", async (req, res) => {
 app.get("/products/:id/edit", async (req, res) => {
   const { id } = req.params;
   const product = await Product.findById(id);
-  res.render("products/editProduct", { product });
+  res.render("products/editProduct", { product, categories });
 });
 
 app.put("/products/:id", async (req, res) => {
@@ -61,6 +69,11 @@ app.put("/products/:id", async (req, res) => {
     new: true,
   });
   res.redirect(`/products/${product._id}`);
+});
+app.delete("/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const deleteProduct = await Product.findByIdAndDelete(id);
+  res.redirect(`/products`);
 });
 
 app.listen(3000, () => {
